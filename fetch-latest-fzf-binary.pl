@@ -88,6 +88,7 @@ link $fzf_destination_path, "$fzf_destination_path-${release_version}";
 
 say "created $fzf_destination_path (and $fzf_destination_path-$release_version)";
 say "run the following to symlink fzf and its extras into place:";
+say "mkdir -vp /usr/local/share/fzf"
 say "ln -svf $ENV{HOME}/git_tree/fzf/bin/fzf{,-tmux} /usr/local/bin/";
 say "ln -svf $ENV{HOME}/git_tree/fzf/{plugin,shell}/* /usr/local/share/fzf/";
 
