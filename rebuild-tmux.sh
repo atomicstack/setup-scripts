@@ -23,6 +23,22 @@ fi
 echo "################################################################################"
 echo "################################################################################"
 
+# automake libevent-devel bison ncurses-devel
+if [[ ! $(which automake) || ! $( which yacc ) ]];
+  echo -n "missing dependencies: automake/yacc/... "
+
+  if   [[ $( which yum rpm ) ]]; then
+    echo "run this:\nsudo yum install automake libevent-devel bison ncurses-devel"
+  elif [[ $( which apt-get ) ]]; then
+    echo "run this:\nsudo apt-get install build-essential pkg-config autoconf zip unzip bzip2 libssl-dev zlib1g-dev libreadline-dev libexpat-dev libevent-dev libncurses-dev"
+  else
+    echo "you're on your own!"
+  fi
+fi
+
+echo "################################################################################"
+echo "################################################################################"
+
 if [[ "$MY_OS" == "Darwin" ]]; then
   export ENABLE_UTF8PROC="--enable-utf8proc"
   export CFLAGS=$( pkg-config --cflags-only-I libutf8proc )
